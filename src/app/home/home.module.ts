@@ -4,6 +4,7 @@ import { NavbarComponent } from './navbar/navbar.component';
 import { MaincontentComponent } from './maincontent/maincontent.component';
 import { CatalogModule } from '../catalog/catalog.module';
 import { BackendService } from '../backend.service';
+import { RouterModule } from '@angular/router';
 
 
 
@@ -13,7 +14,7 @@ import { BackendService } from '../backend.service';
     MaincontentComponent
   ],
   imports: [
-    CommonModule,CatalogModule
+    CommonModule,CatalogModule,RouterModule
   ],
   exports:[NavbarComponent,MaincontentComponent],
   providers:[BackendService ],

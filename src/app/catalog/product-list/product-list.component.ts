@@ -1,6 +1,7 @@
 import { Component, OnInit,ViewChild,ViewChildren,QueryList} from '@angular/core';
 import { Product } from '../../models/product';
 import { ProductitemComponent } from '../productitem/productitem.component';
+import { BackendService } from 'src/app/backend.service';
 
 @Component({
   selector: 'app-product-list',
@@ -14,26 +15,14 @@ export class ProductListComponent implements OnInit {
   // มีอยู่ก่อนแล้ว
    products: Product[];
 
-  constructor() 
+  constructor(private backendSerice:BackendService) 
   {
-    this.products=[];
-   //ก่อน ​ViewCheid
-    /*this.products.push({
-    name: 'ส้มโอ',
-    price: 990
-    });
-    this.products.push({
-    name: 'แตงโม',
-    price: 1000
-    });
-    this.products.push({
-    name: 'มะพร้าวนํ้าหอม',
-    price: 500
-    });*/
-  
+    this.products = [];
   }
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+     this.products = this.backendSerice.getProducts();
+  }
   selectedProduct(productComponent:ProductitemComponent) {
     alert(`Product ${productComponent.product.name} selected`);
     this.ProductItems.forEach(p => {
